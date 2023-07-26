@@ -16,7 +16,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     SharedRoutingModule,
     ReactiveFormsModule,
     ButtonsModule,
-    ControlsModule
+    ControlsModule,
+    
   ]
 })
 export class SharedModule { }

@@ -1,0 +1,24 @@
+<div class="form-field" [class.form-field_error]="hasError()" [class.form-field_inline]="isInline">
+    <label class="form-field__label">
+      {{ label }}
+      <span class="form-field__req" *ngIf="required">*</span>
+    </label>
+    <div class="form-field__control">
+          <ng-content></ng-content>
+
+          <div class="form-field__error">
+              <ng-container *ngIf="control && errorKey" [ngSwitch]="errorKey">
+                    <span *ngSwitchCase="'min'">Minimo {{control.errors ? control.errors[errorKey].min : 0}}</span>
+                    <span *ngSwitchCase="'max'">Maximo {{control.errors ? control.errors[errorKey].max : 100000}}</span>
+                    <span *ngSwitchCase="'required'">Este caja de texto es obligatoria</span>
+                    <span *ngSwitchCase="'requiredtrue'">Este caja de texto es obligatoria</span>
+                    <span *ngSwitchCase="'minlength'">cantidad de caracteres minima {{control.errors ? control.errors[errorKey].requiredLength : 0}}</span>
+                    <span *ngSwitchCase="'maxlength'">cantidad de caracteres maxima {{control.errors ? control.errors[errorKey].requiredLength : 0}}</span>
+                    <span *ngSwitchCase="'pattern'">
+                    </span>
+              </ng-container>
+
+          </div>
+
+    </div>
+</div>

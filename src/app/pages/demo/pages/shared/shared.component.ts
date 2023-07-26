@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-shared',
@@ -8,11 +8,20 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class SharedComponent implements OnInit {
   form!: FormGroup;
+  isInline: boolean = true;
+
   constructor(private fb : FormBuilder) { }
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      name : [''],
+      name : ['', {
+        updateOn: 'blur',
+        validators: [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.pattern('[a-zA-Z ]*'),
+        ],
+      }],
     });
   }
 
@@ -20,6 +29,10 @@ export class SharedComponent implements OnInit {
     this.form.patchValue({
       name : 'John Doe',
     });
+  }
+
+  organize() {
+    this.isInline = !this.isInline;
   }
 
   onSubmit() {
