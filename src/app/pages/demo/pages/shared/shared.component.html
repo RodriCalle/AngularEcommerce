@@ -7,7 +7,7 @@
     <br/>
     <br/>
     <app-form-field label="Rodrigo Calle" [required]="true" [control]="form.controls.name"
-        [isInline]="isInline">
+        [isInline]="isInline" [patternError]="regexErrors.email">
         <app-input formControlName="name"></app-input>
     </app-form-field>
     

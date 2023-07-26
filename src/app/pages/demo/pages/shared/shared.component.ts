@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { regex, regexErrors } from '@app/shared/utils';
 
 @Component({
   selector: 'app-shared',
@@ -9,6 +10,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class SharedComponent implements OnInit {
   form!: FormGroup;
   isInline: boolean = true;
+  regexErrors = regexErrors;
 
   constructor(private fb : FormBuilder) { }
 
@@ -19,7 +21,7 @@ export class SharedComponent implements OnInit {
         validators: [
           Validators.required,
           Validators.minLength(3),
-          Validators.pattern('[a-zA-Z ]*'),
+          Validators.pattern(regex.email),
         ],
       }],
     });

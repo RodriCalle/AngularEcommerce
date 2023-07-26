@@ -15,6 +15,8 @@
                     <span *ngSwitchCase="'minlength'">cantidad de caracteres minima {{control.errors ? control.errors[errorKey].requiredLength : 0}}</span>
                     <span *ngSwitchCase="'maxlength'">cantidad de caracteres maxima {{control.errors ? control.errors[errorKey].requiredLength : 0}}</span>
                     <span *ngSwitchCase="'pattern'">
+                      <span *ngIf="patternError">{{ patternError }}</span>
+                      <span *ngIf="!patternError">La expresión regular no tiene coincidencia</span>
                     </span>
               </ng-container>
 
