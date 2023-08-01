@@ -1,0 +1,18 @@
+@import "styles/colors";
+
+.select {
+    line-height: 36px;
+    padding: 0 15px 0 15px;
+
+
+    &_disabled {
+        background-color: rgba(0,0,0,0.05);
+        border: 1px solid rgba(0,0,0,0.15);;
+    }
+}
+
+:host-context(.form-field_error) {
+    input {
+        border: 1px solid $error;
+    }
+}
