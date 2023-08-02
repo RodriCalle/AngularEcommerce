@@ -16,6 +16,12 @@
         <app-password formControlName="password"></app-password>
     </app-form-field>
 
+    <app-form-field label="Autocomplete" [required]="true" [control]="form.controls.autocomplete"
+        [isInline]="isInline">
+        <app-autocomplete formControlName="autocomplete"
+            [items]="items"></app-autocomplete>
+    </app-form-field>
+
     <app-form-field label="Select" [required]="true" [control]="form.controls.select"
         [isInline]="isInline">
         <app-select formControlName="select" [items]="items"></app-select>
