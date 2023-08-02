@@ -1,0 +1,19 @@
+<div class="date-range">
+    <form [formGroup]="form" novalidate autocomplete="off">
+        <div class="date-range__items">
+            <app-date formControlName="start" 
+                (closed)="onClose()"
+                [placeholder]="placeholder?.start || 'Desde'"
+                (changed)="onChange()"
+                [max]="max">
+            </app-date>
+            <span class="date-range__dash">&mdash;</span>
+            <app-date formControlName="end" 
+                (closed)="onClose()"
+                [placeholder]="placeholder?.end || 'Hasta'"
+                (changed)="onChange()"
+                [min]="min">
+            </app-date>
+        </div>
+    </form>
+</div>
