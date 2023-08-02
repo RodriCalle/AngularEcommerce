@@ -4,6 +4,7 @@ import { InputModule } from './input/input.module';
 import { FormFieldModule } from './form-field/form-field.module';
 import { PasswordModule } from './password/password.module';
 import { SelectModule } from './select/select.module';
+import { CheckboxesModule } from './checkboxes/checkboxes.module';
 
 
 
@@ -14,13 +15,15 @@ import { SelectModule } from './select/select.module';
     InputModule,
     FormFieldModule,
     PasswordModule,
-    SelectModule
+    SelectModule,
+    CheckboxesModule,
   ],
   exports : [
     InputModule,
     FormFieldModule,
     PasswordModule,
-    SelectModule
+    SelectModule,
+    CheckboxesModule
   ]
 })
 export class ControlsModule { }
