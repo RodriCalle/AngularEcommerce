@@ -6,7 +6,7 @@
     <app-button (click)="onPatchValue()">Boton de prueba</app-button>
     <br/>
     <br/>
-    <app-form-field label="Rodrigo Calle" [required]="true" [control]="form.controls.name"
+    <app-form-field label="Name" [required]="true" [control]="form.controls.name"
         [isInline]="isInline" [patternError]="regexErrors.email">
         <app-input formControlName="name"></app-input>
     </app-form-field>
@@ -24,5 +24,10 @@
     <app-form-field label="Checkboxes" [required]="true" [control]="form.controls.checkboxes"
         [isInline]="isInline">
         <app-checkboxes formControlName="checkboxes" [items]="items"></app-checkboxes>
+    </app-form-field>
+
+    <app-form-field label="Radios" [required]="true" [control]="form.controls.radios"
+        [isInline]="isInline">
+        <app-radios formControlName="radio" [items]="items"></app-radios>
     </app-form-field>
 </form>
