@@ -30,4 +30,9 @@
         [isInline]="isInline">
         <app-radios formControlName="radio" [items]="items"></app-radios>
     </app-form-field>
+
+    <app-form-field label="Date" [required]="true" [control]="form.controls.date"
+        [isInline]="isInline">
+        <app-date formControlName="date"></app-date>
+    </app-form-field>
 </form>
