@@ -14,6 +14,7 @@ export class SharedComponent implements OnInit {
   regexErrors = regexErrors;
 
   items!: ControlItem[];
+  showSpinner: boolean = false;
 
   constructor(private fb: FormBuilder) {
     this.items = [
@@ -132,6 +133,6 @@ export class SharedComponent implements OnInit {
     throw new Error('Method not implemented.');
   }
   onToggleSpinner() {
-    throw new Error('Method not implemented.');
+    this.showSpinner = !this.showSpinner;
   }
 }

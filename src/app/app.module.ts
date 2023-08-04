@@ -19,7 +19,7 @@ export const MY_FORMATS: MatDateFormats = {
     dateInput: { day: 'numeric', month: 'numeric', year: 'numeric' },
   },
   display: {
-    dateInput: { day: 'numeric', month: 'short', year: 'numeric' },
+    dateInput: { day: '2-digit', month: '2-digit', year: 'numeric' },
     monthYearLabel: { year: 'numeric', month: 'short' },
     dateA11yLabel: { year: 'numeric', month: 'long', day: 'numeric' },
     monthYearA11yLabel: { year: 'numeric', month: 'long' },
