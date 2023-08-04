@@ -2,13 +2,15 @@
 
 
 <form [formGroup]="form" novalidate autocomplete="off" (ngSubmit)="onSubmit()">
+    <app-button type="submit">Submit</app-button>
     <app-button (click)="organize()">Organizar</app-button>
-    <app-button (click)="onPatchValue()">Boton de prueba</app-button>
+    <app-button (click)="onPatchValue()">Datos de prueba</app-button>
+    <app-button (click)="onToggleDisabled()">Disabled</app-button>
     <br/>
     <br/>
-    <app-form-field label="Name" [required]="true" [control]="form.controls.name"
+    <app-form-field label="Email" [required]="true" [control]="form.controls.email"
         [isInline]="isInline" [patternError]="regexErrors.email">
-        <app-input formControlName="name"></app-input>
+        <app-input formControlName="email"></app-input>
     </app-form-field>
 
     <app-form-field label="Password" [required]="true" [control]="form.controls.password"
@@ -34,7 +36,7 @@
 
     <app-form-field label="Radios" [required]="true" [control]="form.controls.radios"
         [isInline]="isInline">
-        <app-radios formControlName="radio" [items]="items"></app-radios>
+        <app-radios formControlName="radios" [items]="items"></app-radios>
     </app-form-field>
 
     <app-form-field label="Date" [required]="true" [control]="form.controls.date"

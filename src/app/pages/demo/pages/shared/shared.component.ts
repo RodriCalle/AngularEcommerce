@@ -26,7 +26,7 @@ export class SharedComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      name : ['', {
+      email : ['', {
         updateOn: 'blur',
         validators: [
           Validators.required,
@@ -83,7 +83,17 @@ export class SharedComponent implements OnInit {
 
   onPatchValue(){
     this.form.patchValue({
-      name : 'John Doe',
+      email : 'JohnDoe@gmail.com',
+      password: 'Rodrigo34324@.4',
+      select: 2,
+      autocomplete: 3,
+      checkboxes: [1, 2],
+      radios: 4,
+      date: new Date(),
+      dateRange: {
+        start: new Date(2022, 5, 10).getTime(),
+        end: new Date(2022, 11, 10).getTime(),
+      }
     });
   }
 
@@ -92,7 +102,15 @@ export class SharedComponent implements OnInit {
   }
 
   onSubmit() {
+    if (this.form.invalid) {
+      this.form.markAllAsTouched();
+      return;
+    }
     console.log(this.form.value);
+  }
+
+  onToggleDisabled() {
+    this.form.enabled ? this.form.disable() : this.form.enable();
   }
 
 }
