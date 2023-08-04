@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ControlItem } from '@app/models/frontend';
+import { NotificationService } from '@app/services/notification/notification.service';
 import { regex, regexErrors } from '@app/shared/utils';
 
 @Component({
@@ -16,7 +17,7 @@ export class SharedComponent implements OnInit {
   items!: ControlItem[];
   showSpinner: boolean = false;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private notificationService: NotificationService) {
     this.items = [
       { label: 'Item 1', value: 1 },
       { label: 'Item 2', value: 2 },
@@ -127,10 +128,10 @@ export class SharedComponent implements OnInit {
   }
 
   onError() {
-    throw new Error('Method not implemented.');
+    this.notificationService.error('Se encotraron errores en el proceso.');
   }
   onSuccess() {
-    throw new Error('Method not implemented.');
+    this.notificationService.success('El proceso fue exitoso.');
   }
   onToggleSpinner() {
     this.showSpinner = !this.showSpinner;

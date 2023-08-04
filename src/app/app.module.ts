@@ -13,6 +13,7 @@ import { environment } from '@src/environments/environment';
 import { HeaderComponent } from './components/header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatNativeDateModule, MatDateFormats, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+import { NotificationModule } from './services';
 
 export const MY_FORMATS: MatDateFormats = {
   parse: {
@@ -41,6 +42,8 @@ export const MY_FORMATS: MatDateFormats = {
     AngularFireStorageModule,
     
     MatNativeDateModule,
+
+    NotificationModule.forRoot()
 
   ],
   providers: [
