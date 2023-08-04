@@ -6,7 +6,7 @@ import { regex, regexErrors } from '@app/shared/utils';
 @Component({
   selector: 'app-shared',
   templateUrl: './shared.component.html',
-  styleUrls: ['./shared.component.scss']
+  styleUrls: ['./shared.component.scss'],
 })
 export class SharedComponent implements OnInit {
   form!: FormGroup;
@@ -15,75 +15,87 @@ export class SharedComponent implements OnInit {
 
   items!: ControlItem[];
 
-  constructor(private fb : FormBuilder) {
+  constructor(private fb: FormBuilder) {
     this.items = [
-      { label: 'Item 1', value: 1, },
-      { label: 'Item 2', value: 2, },
-      { label: 'Item 3', value: 3, },
-      { label: 'Item 4', value: 4, },
+      { label: 'Item 1', value: 1 },
+      { label: 'Item 2', value: 2 },
+      { label: 'Item 3', value: 3 },
+      { label: 'Item 4', value: 4 },
     ];
-   }
+  }
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      email : ['', {
-        updateOn: 'blur',
-        validators: [
-          Validators.required,
-          Validators.minLength(3),
-          Validators.pattern(regex.email),
-        ],
-      }],
-      password : ['', {
-        updateOn: 'blur',
-        validators: [
-          Validators.required,
-          Validators.minLength(3),
-          Validators.pattern(regex.password),
-        ],
-      }],
-      select : [null, {
-        updateOn: 'change',
-        validators: [
-          Validators.required,
-        ],
-      }],
-      checkboxes : [[], {
-        updateOn: 'change',
-        validators: [
-          Validators.required,
-        ],
-      }],
-      radios: [null, {
-        updateOn: 'change',
-        validators: [
-          Validators.required,
-        ],
-      }],
-      date: [null, {
-        updateOn: 'change',
-        validators: [
-          Validators.required,
-        ],
-      }],
-      dateRange: [null, {
-        updateOn: 'change',
-        validators: [
-          Validators.required,
-        ],
-      }],
-      autocomplete: [null, {
-        updateOn: 'blur',
-        validators: [
-          Validators.required,
-        ],
-      }],
+      email: [
+        '',
+        {
+          updateOn: 'blur',
+          validators: [
+            Validators.required,
+            Validators.minLength(3),
+            Validators.pattern(regex.email),
+          ],
+        },
+      ],
+      password: [
+        '',
+        {
+          updateOn: 'blur',
+          validators: [
+            Validators.required,
+            Validators.minLength(3),
+            Validators.pattern(regex.password),
+          ],
+        },
+      ],
+      select: [
+        null,
+        {
+          updateOn: 'change',
+          validators: [Validators.required],
+        },
+      ],
+      checkboxes: [
+        [],
+        {
+          updateOn: 'change',
+          validators: [Validators.required],
+        },
+      ],
+      radios: [
+        null,
+        {
+          updateOn: 'change',
+          validators: [Validators.required],
+        },
+      ],
+      date: [
+        null,
+        {
+          updateOn: 'change',
+          validators: [Validators.required],
+        },
+      ],
+      dateRange: [
+        null,
+        {
+          updateOn: 'change',
+          validators: [Validators.required],
+        },
+      ],
+      autocomplete: [
+        null,
+        {
+          updateOn: 'blur',
+          validators: [Validators.required],
+        },
+      ],
     });
   }
 
-  onPatchValue(){
+  onPatchValue() {
     this.form.patchValue({
-      email : 'JohnDoe@gmail.com',
+      email: 'JohnDoe@gmail.com',
       password: 'Rodrigo34324@.4',
       select: 2,
       autocomplete: 3,
@@ -93,7 +105,7 @@ export class SharedComponent implements OnInit {
       dateRange: {
         start: new Date(2022, 5, 10).getTime(),
         end: new Date(2022, 11, 10).getTime(),
-      }
+      },
     });
   }
 
@@ -113,4 +125,13 @@ export class SharedComponent implements OnInit {
     this.form.enabled ? this.form.disable() : this.form.enable();
   }
 
+  onError() {
+    throw new Error('Method not implemented.');
+  }
+  onSuccess() {
+    throw new Error('Method not implemented.');
+  }
+  onToggleSpinner() {
+    throw new Error('Method not implemented.');
+  }
 }
