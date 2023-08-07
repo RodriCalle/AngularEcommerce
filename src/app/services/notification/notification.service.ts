@@ -13,7 +13,7 @@ export class NotificationService {
         message: message
       },
       duration: 5000,
-      panelClass: ['mat-snack-bar_error']
+      panelClass: ['mat-snackbar_error']
     });
   }
 
@@ -23,7 +23,7 @@ export class NotificationService {
         message: message
       },
       duration: 5000,
-      panelClass: ['mat-snack-bar_success']
+      panelClass: ['mat-snackbar_success']
     });
   }
 }
