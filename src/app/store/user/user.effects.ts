@@ -77,6 +77,9 @@ export class UserEffects {
             (signInState) =>
             this.afs.doc<User>(`users/${signInState.user ? signInState.user.uid : ''}`).valueChanges().pipe(
                 take(1),
+                tap(() => {
+                  this.router.navigate(['/']);
+                }),
                 map((user) => new fromActions.SignInSuccess(
                     signInState.user ? signInState.user.uid : '',
                     user ? user : null
@@ -106,6 +109,27 @@ export class UserEffects {
           })
         )
       )
+    )
+  );
+
+  init: Observable<Action> = createEffect(() =>
+    this.actions.pipe(
+      ofType(fromActions.Types.INIT),
+      switchMap(() => this.afAuth.authState.pipe(take(1))),
+      switchMap((authState) => {
+        if (authState){
+          return this.afs.doc<User>(`users/${authState.uid}`).valueChanges().pipe(
+            take(1),
+            map((user) => new fromActions.InitAuthorized(authState.uid, user || null)),
+            catchError((error) => {
+              this.notificationService.error(error.message);
+              return of(new fromActions.InitError(error.message));
+            }),
+          );
+        } else {
+          return of(new fromActions.InitUnauthorized());
+        }
+      }),
     )
   );
 }

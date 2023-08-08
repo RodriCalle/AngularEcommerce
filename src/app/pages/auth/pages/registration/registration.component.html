@@ -1,0 +1,42 @@
+<div class="app-page">
+    <div class="app-page__header">
+        <h1> Registro de usuario</h1>
+    </div>
+
+    <form (ngSubmit)="onSubmit()" [formGroup]="form" (keyup.enter)="onSubmit()">
+
+        <div class="app-page__content">
+            <app-form-field label="Email" 
+                [control]="form.controls.email"
+                [required]="true" [isInline]="false"
+                [patternError]="regexErrors.email">
+                <app-input formControlName="email"></app-input>
+            </app-form-field>
+
+            <app-form-field label="Password"
+                [control]="form.controls.password"
+                [required]="true" [isInline]="false"
+                [patternError]="regexErrors.password">
+                <app-password formControlName="password"></app-password>
+            </app-form-field>
+
+            <app-form-field label="Repeat Password"
+                [control]="form.controls.passwordRepeat"
+                [required]="true" [isInline]="false"
+                [patternError]="regexErrors.password">
+                <app-password formControlName="passwordRepeat"></app-password>
+            </app-form-field>
+
+            <div class="error" [class.error_active]="form.hasError('repeat')">
+                Las contraseñas no coinciden.
+            </div>
+            
+        </div>
+
+        <div class="app-page__footer">
+            <app-button type="submit">Enviar</app-button>
+        </div>
+    </form>
+
+    <app-spinner *ngIf="loading$ | async"></app-spinner>
+</div>

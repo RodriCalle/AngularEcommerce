@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import * as fromRoot from './store';
 import * as fromDictionaries from './store/dictionaries';
+import * as fromUser from './store/user';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -10,10 +12,17 @@ import * as fromDictionaries from './store/dictionaries';
 })
 export class AppComponent implements OnInit {
   title = 'ecommerce-angular-app';
+  isAuthorized$!: Observable<boolean | null>;
 
   constructor(private store:Store<fromRoot.State>) { }
 
   ngOnInit() {
+    this.isAuthorized$ = this.store.pipe(select(fromUser.getIsAuthorized));
+    this.store.dispatch(new fromUser.Init());
     this.store.dispatch(new fromDictionaries.Read());
+  }
+
+  onSignOut(): void {
+    this.store.dispatch(new fromUser.SignOut());
   }
 }

@@ -4,6 +4,18 @@
     </div>
 
     <div class="header__navigation">
+
+        <div *ngIf="!isAuthorized">
+            <a class="app-a" routerLink="auth/registration" routerLinkActive="app-a__active">Registrarme</a>
+            <a class="app-a" routerLink="auth/login" routerLinkActive="app-a__active">Inicio de sesión</a>
+        </div>
+        
         <a class="app-a" routerLink="demo" routerLinkActive="app-a__active">Demo</a>
+
+        <div *ngIf="isAuthorized">
+            <a class="app-a" (click)="onSignOut()">Cerrar Sesión</a>
+        </div>
+        
+
     </div>
 </div>
