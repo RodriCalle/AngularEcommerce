@@ -136,4 +136,8 @@ export class SharedComponent implements OnInit {
   onToggleSpinner() {
     this.showSpinner = !this.showSpinner;
   }
+
+  onFilesChanged(urls: string | string[]): void {
+    console.log(urls);
+  }
 }

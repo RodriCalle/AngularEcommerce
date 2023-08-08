@@ -1,3 +1,13 @@
+<h2>Cargar Archivos</h2>
+
+<app-button appFilesUpload [multiple]="true" (changed)="onFilesChanged($event)">
+    Subir multiples imagenes
+</app-button>
+
+
+<app-button appFilesUpload [crop]="true">
+    Subir una imagen
+</app-button>
 <h2>Actions</h2>
 
 <app-button (click)="onToggleSpinner()">Spinner</app-button>
